@@ -34,7 +34,7 @@ export default function FullWidthVisual() {
           className="h-[120%] w-full bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=1920&q=80')",
+              "url('/images/background.png')",
           }}
         />
       </motion.div>
@@ -54,15 +54,15 @@ export default function FullWidthVisual() {
           className="max-w-xl"
         >
           <span className="text-[10px] tracking-[0.4em] uppercase text-[#C6A75E]/60 block mb-4">
-            Engineering Excellence
+            A streamlined approach to automotive excellence, every step of the way.
           </span>
           <h2
             className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Beyond
+            Our Service 
             <br />
-            <span className="text-gradient-gold">Performance</span>
+            <span className="text-gradient-gold">Process</span>
           </h2>
         </motion.div>
 

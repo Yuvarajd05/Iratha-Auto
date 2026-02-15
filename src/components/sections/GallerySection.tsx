@@ -5,29 +5,34 @@ import { useRef } from "react";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
-    title: "Mountain Pass",
-    subtitle: "Alpine Performance",
+    src: "/images/car-diagnostic.png",
+    title: "Engine Diagnostics",
+    subtitle: "Advanced computerized diagnostics to identify and resolve engine issues with precision.",
   },
   {
-    src: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80",
-    title: "Urban Drive",
-    subtitle: "City Precision",
+    src: "/images/brake-suspension.png",
+    title: "Brake & Suspension",
+    subtitle: "Complete brake system service and suspension tuning for optimal safety and comfort.",
   },
   {
-    src: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
-    title: "Coastal Route",
-    subtitle: "Limitless Range",
+    src: "/images/body-paint.png",
+    title: "Paint & Bodywork",
+    subtitle: "Professional collision repair and custom paint services to restore your vehicle's beauty.",
   },
   {
-    src: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=80",
-    title: "Desert Terrain",
-    subtitle: "All-Surface Control",
+    src: "/images/periodic-maintaince.png",
+    title: "Periodic Maintenance",
+    subtitle: "Scheduled maintenance packages to keep your vehicle running at peak performance.",
   },
   {
-    src: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80",
-    title: "Night Circuit",
-    subtitle: "Track Ready",
+    src: "/images/electricals.png",
+    title: "Electrical Systems",
+    subtitle: "Expert diagnosis and repair of all electrical components and modern vehicle systems.",
+  },
+  {
+    src: "/images/Tuning.png",
+    title: "Performance Tuning",
+    subtitle: "Custom performance upgrades and tuning to enhance your driving experience.",
   },
 ];
 
@@ -46,7 +51,7 @@ export default function GallerySection() {
           className="text-center"
         >
           <span className="text-[10px] tracking-[0.4em] uppercase text-[#C6A75E]/60 block mb-6">
-            Terrain Gallery
+            IRATHA Gallery
           </span>
           <h2
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white"

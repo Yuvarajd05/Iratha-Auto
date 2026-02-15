@@ -39,17 +39,15 @@ export default function SplitSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight text-white"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Energize
+              Comprehensive
               <br />
-              <span className="text-gradient-gold">Your</span>
+              <span className="text-gradient-gold">Auto</span>
               <br />
-              Machine
+              Services
             </h2>
 
             <p className="mt-8 max-w-md text-sm leading-relaxed tracking-wide text-white/40 font-light">
-              Every curve. Every line. Engineered with absolute precision for those who
-              demand more from the road. A symphony of power and elegance that transcends
-              conventional automotive design.
+              From routine maintenance to complex repairs, we deliver excellence in every service.
             </p>
 
             <motion.a
@@ -76,7 +74,7 @@ export default function SplitSection() {
               className="h-[120%] w-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80')",
+                  "url('/images/toyota.png')",
               }}
             />
             {/* Overlay gradient */}

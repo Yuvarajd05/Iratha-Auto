@@ -9,8 +9,6 @@ export default function HeroSection() {
 
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
-
-    // Change 2.8 to match the best cinematic moment in your video
     if (videoRef.current.currentTime >= 5) {
       setShowContent(true);
     }
@@ -34,9 +32,8 @@ export default function HeroSection() {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
       </div>
 
       {/* Content */}

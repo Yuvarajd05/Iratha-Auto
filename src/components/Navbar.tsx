@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Models", href: "#models" },
-  { label: "Performance", href: "#performance" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Services", href: "#models" },
+  { label: "Process", href: "#performance" },
+  { label: "Contact", href: "#gallery" },
   { label: "Specs", href: "#specs" },
 ];
 
@@ -27,7 +27,7 @@ export default function Navbar() {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 2.4, duration: 0.8 }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6"
+      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-1"
     >
       {/* Background Blur Layer */}
       <motion.div
@@ -54,7 +54,7 @@ export default function Navbar() {
             alt="Iratha Auto Logo"
             width={400}
             height={150}
-            className="h-30 w-auto object-contain"
+            className="h-20 w-auto object-contain"
             priority
           />
         </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
           href="#contact"
           className="hidden md:block text-[11px] tracking-[0.2em] uppercase text-[#C6A75E] border border-[#C6A75E]/40 px-7 py-2.5 hover:bg-[#C6A75E]/10 transition-all duration-300"
         >
-          Reserve
+          Book a Service
         </a>
 
         {/* Mobile Menu Button */}

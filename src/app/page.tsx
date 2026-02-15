@@ -8,6 +8,7 @@ import GallerySection from "@/components/sections/GallerySection";
 import FullWidthVisual from "@/components/sections/FullWidthVisual";
 import CTASection from "@/components/sections/CTASection";
 import InstagramSection from "@/components/sections/InstagramSection";
+import BrandSection from "@/components/sections/BrandSection";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <GallerySection />
         <FullWidthVisual />
         <CTASection />
+        <BrandSection />
         <InstagramSection />
       </main>
       <Footer />

@@ -1,7 +1,11 @@
 "use client";
 
 const footerLinks = {
-  Contact: ["Katapady,Udupi 574105", "+91 7500408090", "info@irathaauto.com", ],
+  Contact: [
+    "Katapady,Udupi 574105",
+    "+91 7500408090",
+    "info@irathaauto.com",
+  ],
   Company: ["About", "Careers", "Press", "Contact"],
   Legal: ["Privacy", "Terms", "Cookies"],
 };
@@ -15,20 +19,17 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-8 md:px-16 py-20">
         {/* Top section */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
-          {/* Logo */}
+          
+          {/* Logo Section */}
           <div>
-            <span
-              className="text-2xl tracking-[0.3em] text-[#C6A75E] font-light block"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              IRATHA
-            </span>
-            <span className="text-[10px] tracking-[0.3em] text-white/30 font-light uppercase mt-1 block">
-              Auto
-            </span>
-            <p className="mt-6 text-xs tracking-wide text-white/25 font-light max-w-xs leading-relaxed">
+            <img
+              src="images/logo.png"
+              alt="Iratha Auto Logo"
+              className="h-25 md:h-20 w-auto opacity-90 hover:opacity-100 transition duration-500 mb-6"
+            />
+
+            <p className="text-xs tracking-wide text-white/25 font-light max-w-xs leading-relaxed">
               Premium 4-wheeler service and repair for those who demand excellence.
-              
             </p>
           </div>
 
@@ -61,8 +62,9 @@ export default function Footer() {
           <p className="text-[10px] tracking-[0.2em] text-white/20 font-light">
             &copy; 2026 IRATHA Auto. All rights reserved.
           </p>
+
           <div className="flex gap-6">
-            {["Instagram", "LinkedIn", "X","Maps"].map((social) => (
+            {["Instagram", "LinkedIn", "X", "Maps"].map((social) => (
               <a
                 key={social}
                 href="#"

@@ -57,6 +57,7 @@
 }
 
 @layer utilities {
+
   .text-gradient-gold {
     background: linear-gradient(135deg, #C6A75E 0%, #D4BA7A 50%, #C6A75E 100%);
     -webkit-background-clip: text;
@@ -73,6 +74,29 @@
     z-index: 1;
     opacity: 0.5;
   }
+}
+
+/* ============================= */
+/* Premium Infinite Brand Scroll */
+/* ============================= */
+
+@keyframes brandScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: brandScroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
 
 /* Hide Next.js error overlay portal */

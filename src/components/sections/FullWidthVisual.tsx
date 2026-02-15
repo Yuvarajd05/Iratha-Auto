@@ -4,10 +4,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const specs = [
-  { label: "Engine Calibration", value: "Neural AI V12" },
-  { label: "Precision Diagnostics", value: "360° Sensor Array" },
-  { label: "Performance Tuning", value: "Adaptive Torque" },
-  { label: "Drive System", value: "Quad Motor AWD" },
+  { label: "Schedule", value: "Book your appointment online or by phone at your convenience" },
+  { label: "Inspect", value: "Comprehensive inspection and transparent diagnosis of your vehicle" },
+  { label: "Repair", value: "Expert technicians perform repairs with precision and care" },
+  { label: "Quality Check", value: "Rigorous testing to ensure everything meets our high standards" },
 ];
 
 export default function FullWidthVisual() {
@@ -80,7 +80,7 @@ export default function FullWidthVisual() {
                 <p className="text-[10px] tracking-[0.25em] uppercase text-[#C6A75E]/60 mb-1">
                   {spec.label}
                 </p>
-                <p className="text-sm tracking-wide text-white/80 font-light">
+                <p className="text-sm tracking-wide text-white/80 font-light max-w-[220px] leading-relaxed">
                   {spec.value}
                 </p>
               </div>

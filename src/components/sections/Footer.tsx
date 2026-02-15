@@ -1,7 +1,7 @@
 "use client";
 
 const footerLinks = {
-  Models: ["Sovereign GT", "Phantom EV", "Apex RS", "Vanguard"],
+  Contact: ["Katapady,Udupi 574105", "+91 7500408090", "info@irathaauto.com", ],
   Company: ["About", "Careers", "Press", "Contact"],
   Legal: ["Privacy", "Terms", "Cookies"],
 };
@@ -27,8 +27,8 @@ export default function Footer() {
               Auto
             </span>
             <p className="mt-6 text-xs tracking-wide text-white/25 font-light max-w-xs leading-relaxed">
-              Redefining automotive excellence through precision engineering and
-              visionary design.
+              Premium 4-wheeler service and repair for those who demand excellence.
+              
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
             &copy; 2026 IRATHA Auto. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Instagram", "LinkedIn", "X"].map((social) => (
+            {["Instagram", "LinkedIn", "X","Maps"].map((social) => (
               <a
                 key={social}
                 href="#"

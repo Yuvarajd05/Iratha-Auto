@@ -5,7 +5,7 @@ import Script from "next/script";
 
 export default function InstagramSection() {
   useEffect(() => {
-    if ((window as any).instgrm) {
+    if (typeof window !== "undefined" && (window as any).instgrm) {
       (window as any).instgrm.Embeds.process();
     }
   }, []);
@@ -21,7 +21,7 @@ export default function InstagramSection() {
 
         {/* Scroll Container */}
         <div className="flex gap-8 overflow-x-auto pb-4">
-          
+
           <blockquote
             className="instagram-media"
             data-instgrm-permalink="https://www.instagram.com/reel/DUYpivvDLRV/"
@@ -31,7 +31,7 @@ export default function InstagramSection() {
 
           <blockquote
             className="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/reel/DUYFrC-DOi-/"
+            data-instgrm-permalink="https://www.instagram.com/reel/DUyEhcOCYdv/"
             data-instgrm-version="14"
             style={{ minWidth: "320px" }}
           ></blockquote>
@@ -52,7 +52,7 @@ export default function InstagramSection() {
 
           <blockquote
             className="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/reel/DUOIcI5EgG2/"
+            data-instgrm-permalink="https://www.instagram.com/reel/DUslyR6jJkP/"
             data-instgrm-version="14"
             style={{ minWidth: "320px" }}
           ></blockquote>
@@ -73,3 +73,4 @@ export default function InstagramSection() {
     </section>
   );
 }
+

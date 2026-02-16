@@ -1,5 +1,3 @@
-"use client";
-
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
@@ -7,8 +5,9 @@ import SplitSection from "@/components/sections/SplitSection";
 import GallerySection from "@/components/sections/GallerySection";
 import FullWidthVisual from "@/components/sections/FullWidthVisual";
 import CTASection from "@/components/sections/CTASection";
-import InstagramSection from "@/components/sections/InstagramSection";
 import BrandSection from "@/components/sections/BrandSection";
+import InstagramSection from "@/components/sections/InstagramSection";
+import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -24,6 +23,7 @@ export default function Home() {
         <CTASection />
         <BrandSection />
         <InstagramSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

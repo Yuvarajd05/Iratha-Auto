@@ -1,3 +1,5 @@
+"use client"
+import{useState} from "react"
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
@@ -9,12 +11,18 @@ import BrandSection from "@/components/sections/BrandSection";
 import InstagramSection from "@/components/sections/InstagramSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
-
+ 
+import { ServiceRequestForm } from "@/components/Forms/ServiceRequestForm";
+ 
 export default function Home() {
+ 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+ 
   return (
     <>
       <LoadingScreen />
-      <Navbar />
+      <Navbar onBookService={() => setIsFormOpen(true)} />
+ 
       <main>
         <HeroSection />
         <SplitSection />
@@ -25,7 +33,12 @@ export default function Home() {
         <InstagramSection />
         <ContactSection />
       </main>
+ 
       <Footer />
+ 
+      {isFormOpen && (
+        <ServiceRequestForm onClose={() => setIsFormOpen(false)} />
+      )}
     </>
   );
 }

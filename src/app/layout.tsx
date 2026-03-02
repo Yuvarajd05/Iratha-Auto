@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
@@ -20,16 +20,27 @@ export const metadata: Metadata = {
   description:
     "IRATHA Auto - Next generation luxury automotive. Experience performance, precision, and power redefined for the modern era.",
   keywords: ["luxury cars", "automotive", "performance vehicles", "IRATHA Auto"],
+  alternates: {
+    canonical: "https://iratha.com",
+  },
+};
+
+/* ✅ THIS WAS MISSING — FIXES MOBILE VIEW */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${playfair.variable} antialiased overflow-x-hidden`}
+      >
         {children}
         <VisualEditsMessenger />
       </body>

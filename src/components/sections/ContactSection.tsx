@@ -39,7 +39,11 @@ export default function ContactSection() {
               placeholder="Email Address"
               className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none transition-all"
             />
-
+            <input
+             type="tel"
+             placeholder="Phone Number"
+             className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none transition-all"
+              />
             <textarea
               rows={5}
               placeholder="Your Message"

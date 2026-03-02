@@ -165,7 +165,7 @@ export default function LoadingScreen() {
             className="absolute bottom-[25%] flex flex-col items-center gap-3"
           >
             <span
-              className="text-sm font-light tracking-[0.4em] text-[#C6A75E]/70"
+              className="text-lg font-light tracking-[0.4em] text-[#C6A75E]/70"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               IRATHA AUTO

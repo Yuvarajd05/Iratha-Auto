@@ -6,10 +6,10 @@ import Image from "next/image";
 import { ServiceRequestForm } from "@/components/Forms/ServiceRequestForm"; // ✅ adjust path if needed
 
 const navLinks = [
-  { label: "Services", href: "#models" },
-  { label: "Process", href: "#performance" },
+  { label: "Services", href: "#gallery" },
+  { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
-  { label: "Specs", href: "#specs" },
+  { label: "Specs", href: "#cta" },
 ];
 
 export default function Navbar({onBookService}:{onBookService:()=>void}) {

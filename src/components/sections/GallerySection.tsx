@@ -5,7 +5,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 
 const galleryImages = [
   {
@@ -78,30 +78,34 @@ const galleryImages = [
 
 export default function GallerySection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [autoMove, setAutoMove] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [maxScroll, setMaxScroll] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  const cardWidth = 444;
-  const totalScrollWidth =
-    (galleryImages.length - 3) * cardWidth;
+  // Calculate real horizontal scroll distance
+  useLayoutEffect(() => {
+    if (containerRef.current) {
+      const totalWidth = containerRef.current.scrollWidth;
+      const visibleWidth = containerRef.current.offsetWidth;
+      setMaxScroll(totalWidth - visibleWidth);
+    }
+  }, []);
 
   const scrollX = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, -totalScrollWidth]
+    [0, -maxScroll]
   );
-
-  const hoverX = autoMove ? -totalScrollWidth : scrollX;
 
   return (
     <section
       ref={sectionRef}
       id="gallery"
-      className="relative h-[300vh] bg-[#0A0A0A]"
+      className="relative min-h-[200vh] bg-[#0A0A0A]"
     >
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
 
@@ -122,14 +126,8 @@ export default function GallerySection() {
 
         {/* Horizontal Scroll */}
         <motion.div
+          ref={containerRef}
           style={{ x: scrollX }}
-          onMouseEnter={() => setAutoMove(true)}
-          onMouseLeave={() => setAutoMove(false)}
-          animate={autoMove ? { x: -totalScrollWidth } : {}}
-          transition={{
-            duration: 6,
-            ease: "linear",
-          }}
           className="flex gap-6 px-8 md:px-16"
         >
           {galleryImages.map((image, index) => (

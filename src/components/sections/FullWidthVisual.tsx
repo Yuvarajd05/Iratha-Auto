@@ -39,7 +39,7 @@ export default function FullWidthVisual() {
 
   return (
     <section
-      id="specs"
+      id="process"
       ref={sectionRef}
       className="relative min-h-screen w-full overflow-hidden"
     >

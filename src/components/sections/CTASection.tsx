@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function CTASection() {
   return (
     <section
-      id="contact"
+      id="cta"
       className="relative py-32 md:py-48 bg-gradient-to-b from-[#0A0A0A] via-[#0D0D0D] to-[#0A0A0A]"
     >
       {/* Ambient glow */}

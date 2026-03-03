@@ -36,9 +36,6 @@ export default function CTASection() {
             Meet <span className="text-gradient-gold">Mastery</span>.
           </h2>
 
-          <p className="mt-8 text-sm tracking-wide text-white/35 font-light max-w-md mx-auto">
-            Reserve your place in the next chapter of automotive evolution.
-          </p>
            <p className="mt-8 text-sm tracking-wide text-white/35 font-dark max-w-md mx-auto">
             Authorized partner for 20+ insurance companies, ensuring seamless claim support.
           </p>

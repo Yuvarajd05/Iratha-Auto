@@ -13,6 +13,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
  
 import { ServiceRequestForm } from "@/components/Forms/ServiceRequestForm";
+import ReviewSection from "@/components/sections/ReviewSection";
  
 export default function Home() {
  
@@ -30,6 +31,7 @@ export default function Home() {
         <FullWidthVisual />
         <CTASection />
         <BrandSection />
+        <ReviewSection />
         <InstagramSection />
         <ContactSection />
       </main>

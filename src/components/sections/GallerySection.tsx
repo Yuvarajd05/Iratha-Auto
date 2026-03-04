@@ -15,6 +15,12 @@ const galleryImages = [
       "Advanced infrared curing technology delivering consistent heat and a flawless, high-quality finish.",
   },
   {
+    src: "/images/Customer lounge.png",
+    title: "Customer Lounge",
+    subtitle:
+      "A premium lounge designed for your comfort, while we perfect your ride.",
+  },
+  {
     src: "/images/car-diagnostic.png",
     title: "Engine Diagnostics",
     subtitle:
@@ -67,12 +73,6 @@ const galleryImages = [
     title: "Cashless Insurance",
     subtitle:
       "Comprehensive car insurance solutions for secure and worry-free driving.",
-  },
-  {
-    src: "/images/Customer lounge.png",
-    title: "Customer Lounge",
-    subtitle:
-      "A premium lounge designed for your comfort, while we perfect your ride.",
   },
 ];
 

@@ -19,7 +19,7 @@ export default function ContactSection() {
               Get In Touch
             </h2>
 
-            <p className="mt-6 text-white/40 text-sm max-w-md leading-relaxed">
+            <p className="mt-6 text-white/60 text-sm max-w-md leading-relaxed">
               Have a question about repairs, insurance claims or bookings?
               Fill the form and our team will contact you shortly.
             </p>
@@ -31,23 +31,23 @@ export default function ContactSection() {
             <input
               type="text"
               placeholder="Full Name"
-              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none transition-all"
+              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/60 focus:border-[#C6A75E] outline-none transition-all"
             />
 
             <input
               type="email"
               placeholder="Email Address"
-              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none transition-all"
+              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/60 focus:border-[#C6A75E] outline-none transition-all"
             />
             <input
              type="tel"
              placeholder="Phone Number"
-             className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none transition-all"
+             className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/60 focus:border-[#C6A75E] outline-none transition-all"
               />
             <textarea
               rows={5}
               placeholder="Your Message"
-              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/30 focus:border-[#C6A75E] outline-none resize-none transition-all"
+              className="bg-black border border-white/10 px-5 py-4 text-sm text-white placeholder-white/60 focus:border-[#C6A75E] outline-none resize-none transition-all"
             />
 
             <button

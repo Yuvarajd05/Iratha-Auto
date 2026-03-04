@@ -79,20 +79,37 @@ const galleryImages = [
 export default function GallerySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [maxScroll, setMaxScroll] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState(2000);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  // Calculate real horizontal scroll distance
   useLayoutEffect(() => {
-    if (containerRef.current) {
-      const totalWidth = containerRef.current.scrollWidth;
-      const visibleWidth = containerRef.current.offsetWidth;
-      setMaxScroll(totalWidth - visibleWidth);
-    }
+    const updateSizes = () => {
+      if (containerRef.current) {
+        const totalWidth = containerRef.current.scrollWidth;
+        const visibleWidth = containerRef.current.offsetWidth;
+
+        const scrollDistance = totalWidth - visibleWidth;
+
+        setMaxScroll(scrollDistance);
+
+        // Convert horizontal distance to vertical height
+        setSectionHeight(scrollDistance + window.innerHeight);
+      }
+    };
+
+    updateSizes();
+
+    window.addEventListener("resize", updateSizes);
+
+    return () => {
+      window.removeEventListener("resize", updateSizes);
+    };
   }, []);
 
   const scrollX = useTransform(
@@ -105,18 +122,19 @@ export default function GallerySection() {
     <section
       ref={sectionRef}
       id="gallery"
-      className="relative min-h-[200vh] bg-[#0A0A0A]"
+      style={{ height: sectionHeight }}
+      className="relative bg-[#0A0A0A]"
     >
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
 
         {/* Header */}
-        <div className="mb-10 text-center">
-          <span className="text-[10px] tracking-[0.4em] uppercase text-[#C6A75E]/60 block mb-4">
+        <div className="mb-8 md:mb-12 text-center px-6">
+          <span className="text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-[#C6A75E]/60 block mb-3 md:mb-4">
             IRATHA Gallery
           </span>
 
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white"
+            className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-white"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Built for Every{" "}
@@ -128,12 +146,15 @@ export default function GallerySection() {
         <motion.div
           ref={containerRef}
           style={{ x: scrollX }}
-          className="flex gap-6 px-8 md:px-16"
+          className="flex gap-4 md:gap-6 px-6 md:px-16 will-change-transform"
         >
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="group relative flex-shrink-0 w-[320px] sm:w-[380px] md:w-[420px] h-[480px] md:h-[550px] rounded-2xl overflow-hidden"
+              className="group relative flex-shrink-0
+              w-[240px] sm:w-[300px] md:w-[420px]
+              h-[360px] sm:h-[420px] md:h-[550px]
+              rounded-xl md:rounded-2xl overflow-hidden"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
@@ -144,15 +165,15 @@ export default function GallerySection() {
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              <div className="absolute inset-0 rounded-2xl border border-transparent transition-all duration-500 group-hover:border-[#C6A75E]/40 group-hover:shadow-[0_0_25px_rgba(198,167,94,0.1)]" />
+              <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-transparent transition-all duration-500 group-hover:border-[#C6A75E]/40 group-hover:shadow-[0_0_25px_rgba(198,167,94,0.1)]" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70 block mb-2">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
+                <span className="text-[8px] md:text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70 block mb-2">
                   {image.subtitle}
                 </span>
 
                 <h3
-                  className="text-2xl font-light tracking-wide text-white"
+                  className="text-lg md:text-2xl font-light tracking-wide text-white"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
                   {image.title}

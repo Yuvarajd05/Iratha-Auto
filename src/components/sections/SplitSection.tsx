@@ -17,27 +17,27 @@ export default function SplitSection() {
     <section
       id="models"
       ref={sectionRef}
-      className="relative bg-[#0A0A0A] py-16 overflow-hidden"
+      className="relative bg-[#0A0A0A] py-12 md:py-16 overflow-hidden"
     >
       <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-stretch">
 
         {/* LEFT CONTENT */}
-        <div className="flex flex-1 flex-col justify-center px-8 md:px-16 lg:px-24 py-8 md:py-0 z-10">
+        <div className="flex flex-1 flex-col justify-center px-6 md:px-16 lg:px-24 py-6 md:py-0 z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-4 md:mb-6">
               <span className="h-px w-8 bg-[#C6A75E]/50" />
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70">
+              <span className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70">
                 The Experience
               </span>
             </div>
 
             <h2
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight text-white"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight text-white"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Comprehensive
@@ -47,7 +47,7 @@ export default function SplitSection() {
               Services
             </h2>
 
-            <p className="mt-6 max-w-md text-sm leading-relaxed tracking-wide text-white/40 font-light">
+            <p className="mt-4 md:mt-6 max-w-md text-xs md:text-sm leading-relaxed tracking-wide text-white/40 font-light">
               From routine maintenance to complex repairs, we deliver excellence in every service.
             </p>
 
@@ -57,7 +57,7 @@ export default function SplitSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="group mt-8 inline-flex items-center gap-4 text-[11px] tracking-[0.25em] uppercase text-[#C6A75E]"
+              className="group mt-6 md:mt-8 inline-flex items-center gap-4 text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#C6A75E]"
             >
               <span>Discover More</span>
               <span className="h-px w-8 bg-[#C6A75E]/40 transition-all duration-500 group-hover:w-14 group-hover:bg-[#C6A75E]" />
@@ -66,7 +66,7 @@ export default function SplitSection() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative flex-1 overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="relative flex-1 overflow-hidden min-h-[260px] sm:min-h-[320px] md:min-h-[500px]">
 
           <motion.div
             className="absolute inset-0"

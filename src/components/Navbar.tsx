@@ -68,7 +68,7 @@ export default function Navbar({onBookService}:{onBookService:()=>void}) {
               alt="Iratha Auto Logo"
               width={500}
               height={200}
-              className="h-14 w-auto object-contain"
+              className="h-9 sm:h-10 md:h-14 w-auto object-contain"
               priority
             />
           </a>
@@ -79,7 +79,7 @@ export default function Navbar({onBookService}:{onBookService:()=>void}) {
               <a
                 key={link.label}
                 href={link.href}
-                className="group relative text-[13px] tracking-[0.18em] uppercase text-white/60 hover:text-white transition-colors duration-300"
+                className="group relative text-[13px] tracking-[0.18em] uppercase text-white/80 hover:text-white transition-colors duration-300"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#C6A75E] transition-all duration-500 ease-out group-hover:w-full" />

@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import SplitSection from "@/components/sections/SplitSection";
 import GallerySection from "@/components/sections/GallerySection";
 import FullWidthVisual from "@/components/sections/FullWidthVisual";
+import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
 import CTASection from "@/components/sections/CTASection";
 import BrandSection from "@/components/sections/BrandSection";
 import InstagramSection from "@/components/sections/InstagramSection";
@@ -14,6 +15,7 @@ import Footer from "@/components/sections/Footer";
  
 import { ServiceRequestForm } from "@/components/Forms/ServiceRequestForm";
 import ReviewSection from "@/components/sections/ReviewSection";
+// import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
  
 export default function Home() {
  
@@ -29,6 +31,7 @@ export default function Home() {
         <SplitSection />
         <GallerySection />
         <FullWidthVisual />
+        <BeforeAfterSection/>
         <CTASection  onBookService={()=>setIsFormOpen(true)}/>
         <BrandSection />
         <ReviewSection />

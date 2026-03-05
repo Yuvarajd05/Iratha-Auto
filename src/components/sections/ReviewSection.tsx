@@ -86,7 +86,6 @@ export default function ReviewSection() {
 
         {/* ---------------- MOBILE REVIEWS (SLIDER) ---------------- */}
         <div className="flex md:hidden gap-6 mb-16 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-
           {reviews.map((review, index) => (
             <motion.div
               key={index}
@@ -109,37 +108,37 @@ export default function ReviewSection() {
               </h4>
             </motion.div>
           ))}
-
         </div>
 
         {/* Stats */}
         <div className="border-t border-white/10 pt-8 md:pt-12 text-center">
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+          {/* MOBILE: grid | DESKTOP: flex */}
+          <div className="grid grid-cols-3 md:flex md:flex-row justify-center items-center gap-6 md:gap-12">
 
             <div>
-              <h3 className="text-3xl md:text-4xl text-[#C6A75E] font-light">
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">
                 2500+
               </h3>
-              <p className="text-white/50 text-[10px] md:text-xs tracking-wider uppercase">
+              <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Cars Serviced
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl md:text-4xl text-[#C6A75E] font-light">
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">
                 5+
               </h3>
-              <p className="text-white/50 text-[10px] md:text-xs tracking-wider uppercase">
+              <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Years Experience
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl md:text-4xl text-[#C6A75E] font-light">
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">
                 350+
               </h3>
-              <p className="text-white/50 text-[10px] md:text-xs tracking-wider uppercase">
+              <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Google Reviews
               </p>
             </div>

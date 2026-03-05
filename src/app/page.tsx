@@ -29,7 +29,7 @@ export default function Home() {
         <SplitSection />
         <GallerySection />
         <FullWidthVisual />
-        <CTASection />
+        <CTASection  onBookService={()=>setIsFormOpen(true)}/>
         <BrandSection />
         <ReviewSection />
         <InstagramSection />

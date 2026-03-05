@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion";
 
-export default function CTASection() {
+export default function CTASection({
+  onBookService,
+}: {
+  onBookService: () => void;
+}) {
   return (
     <section
       id="cta"
@@ -36,12 +40,13 @@ export default function CTASection() {
             Meet <span className="text-gradient-gold">Mastery</span>.
           </h2>
 
-           <p className="mt-8 text-sm tracking-wide text-white/35 font-dark max-w-md mx-auto">
+          <p className="mt-8 text-sm tracking-wide text-white/35 font-dark max-w-md mx-auto">
             Authorized partner for 20+ insurance companies, ensuring seamless claim support.
           </p>
-          {/* Animated CTA button */}
-          <motion.a
-            href="#"
+
+          {/* CTA button */}
+          <motion.button
+            onClick={onBookService}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -49,9 +54,10 @@ export default function CTASection() {
             className="group relative mt-12 inline-block overflow-hidden border border-[#C6A75E]/40 px-14 py-4 text-[11px] tracking-[0.3em] uppercase text-[#C6A75E] transition-all duration-500 hover:border-[#C6A75E] hover:bg-[#C6A75E]/10 hover:shadow-[0_0_40px_rgba(198,167,94,0.1)]"
           >
             <span className="relative z-10">Reserve Now</span>
+
             {/* Shine sweep animation */}
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#C6A75E]/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

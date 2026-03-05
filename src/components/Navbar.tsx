@@ -40,7 +40,7 @@ export default function Navbar({onBookService}:{onBookService:()=>void}) {
       <motion.nav
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 2.4, duration: 0.8 }}
+        transition={{  duration: 0.8 }}
         className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-3"
       >
         {/* Background */}
@@ -62,6 +62,7 @@ export default function Navbar({onBookService}:{onBookService:()=>void}) {
         <div className="relative flex items-center justify-between max-w-7xl mx-auto">
           
           {/* Logo */}
+          <div className="w-[140px] md:w-[180px] flex items-center">
           <a href="#" className="flex items-center">
             <Image
               src="/images/logo.png"
@@ -72,6 +73,7 @@ export default function Navbar({onBookService}:{onBookService:()=>void}) {
               priority
             />
           </a>
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-12">

@@ -98,7 +98,6 @@ export default function GallerySection() {
 
         setMaxScroll(scrollDistance);
 
-        // Convert horizontal distance to vertical height
         setSectionHeight(scrollDistance + window.innerHeight);
       }
     };
@@ -154,19 +153,27 @@ export default function GallerySection() {
               className="group relative flex-shrink-0
               w-[240px] sm:w-[300px] md:w-[420px]
               h-[360px] sm:h-[420px] md:h-[550px]
-              rounded-xl md:rounded-2xl overflow-hidden"
+              rounded-xl md:rounded-2xl overflow-hidden
+              transition-all duration-500
+              hover:shadow-[0_0_35px_rgba(198,167,94,0.35)]
+              hover:-translate-y-2"
             >
+
+              {/* Image */}
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
                 style={{
                   backgroundImage: `url('${image.src}')`,
                 }}
               />
 
+              {/* Dark overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-transparent transition-all duration-500 group-hover:border-[#C6A75E]/40 group-hover:shadow-[0_0_25px_rgba(198,167,94,0.1)]" />
+              {/* Gold border glow */}
+              <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-white/10 transition-all duration-500 group-hover:border-[#C6A75E]/50 group-hover:shadow-[0_0_40px_rgba(198,167,94,0.35)]" />
 
+              {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
                 <span className="text-[8px] md:text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70 block mb-2">
                   {image.subtitle}
@@ -179,6 +186,7 @@ export default function GallerySection() {
                   {image.title}
                 </h3>
               </div>
+
             </div>
           ))}
         </motion.div>

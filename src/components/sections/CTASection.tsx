@@ -10,11 +10,29 @@ export default function CTASection({
   return (
     <section
       id="cta"
-      className="relative py-32 md:py-48 bg-gradient-to-b from-[#0A0A0A] via-[#0D0D0D] to-[#0A0A0A]"
+      className="relative py-32 md:py-48 bg-gradient-to-b from-[#0A0A0A] via-[#0D0D0D] to-[#0A0A0A] overflow-hidden"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[400px] w-[600px] rounded-full bg-[#C6A75E]/3 blur-[150px]" />
+      </div>
+
+      {/* Subtle Hexagon Pattern */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.08]">
+        <div
+          className="w-[900px] h-[900px]"
+          style={{
+            backgroundImage: `
+            url("data:image/svg+xml,%3Csvg width='120' height='104' viewBox='0 0 120 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='60,2 118,34 118,70 60,102 2,70 2,34' fill='none' stroke='%23C6A75E' stroke-width='1'/%3E%3C/svg%3E")
+            `,
+            backgroundSize: "120px 104px",
+          }}
+        />
+      </div>
+
+      {/* Extra soft gold glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="h-[500px] w-[500px] rounded-full bg-[#C6A75E]/5 blur-[180px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-8 text-center">

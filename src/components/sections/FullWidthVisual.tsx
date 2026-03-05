@@ -44,10 +44,7 @@ export default function FullWidthVisual() {
       className="relative min-h-screen w-full overflow-hidden"
     >
       {/* Background */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        style={{ y: bgY }}
-      >
+      <motion.div className="absolute inset-0 -z-10" style={{ y: bgY }}>
         <div
           className="h-[110%] w-full bg-cover bg-center"
           style={{
@@ -61,7 +58,7 @@ export default function FullWidthVisual() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A0A0A]/70 via-transparent to-[#0A0A0A]" />
 
       {/* Content Container */}
-      <div className="relative z-10 flex min-h-screen flex-col justify-between px-8 md:px-16 lg:px-24 py-16">
+      <div className="relative z-10 flex min-h-screen flex-col justify-start md:justify-between px-6 md:px-16 lg:px-24 py-10 md:py-12 lg:py-14 gap-8 md:gap-0">
 
         {/* Top Text */}
         <motion.div
@@ -71,12 +68,12 @@ export default function FullWidthVisual() {
           viewport={{ once: true }}
           className="max-w-xl"
         >
-          <span className="text-[10px] tracking-[0.4em] uppercase text-[#C6A75E]/60 block mb-4">
+          <span className="text-[8px] sm:text-[10px] tracking-[0.35em] uppercase text-[#C6A75E]/60 block mb-3 md:mb-4">
             A streamlined approach to automotive excellence, every step of the way.
           </span>
 
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Our Service
@@ -85,32 +82,35 @@ export default function FullWidthVisual() {
           </h2>
         </motion.div>
 
-        {/* 🔥 Bottom Specs (Moved Down) */}
+        {/* Bottom Specs */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-between gap-y-10 mt-10"
+          className="flex flex-wrap justify-between gap-y-6 md:gap-y-8 lg:gap-y-10 mt-4 md:mt-10"
         >
           {specs.map((spec, index) => {
             const Icon = spec.icon;
 
             return (
               <div key={index} className="w-full sm:w-[45%] lg:w-[22%]">
-                
+
                 {/* Icon */}
-                <div className="mb-4 text-[#C6A75E]">
-                  <Icon size={28} strokeWidth={1.5} />
+                <div className="mb-2 sm:mb-4 text-[#C6A75E]">
+                  <Icon
+                    strokeWidth={1.5}
+                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
+                  />
                 </div>
 
                 {/* Label */}
-                <p className="text-base md:text-lg tracking-[0.25em] uppercase text-[#C6A75E] mb-3 font-semibold">
-                {spec.label}
+                <p className="text-xs sm:text-base md:text-lg tracking-[0.25em] uppercase text-[#C6A75E] mb-2 sm:mb-3 font-semibold">
+                  {spec.label}
                 </p>
-                
+
                 {/* Description */}
-                <p className="text-sm tracking-wide text-white/80 font-light leading-relaxed">
+                <p className="text-[11px] sm:text-sm tracking-wide text-white/80 font-light leading-relaxed">
                   {spec.value}
                 </p>
               </div>

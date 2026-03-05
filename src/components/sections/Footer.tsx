@@ -67,13 +67,32 @@ export default function Footer() {
               Location
             </h4>
 
+            {/* ---------- MOBILE LOCATION CARD ---------- */}
+            <div className="md:hidden border border-white/10 rounded-lg p-4 bg-[#111]">
+              <p className="text-[11px] text-white/70 leading-relaxed mb-3">
+                IRATHA Auto <br />
+                Katapady, Moodabettu <br />
+                Udupi, Karnataka
+              </p>
+
+              <a
+                href="https://maps.app.goo.gl/zLNDiZjfNQvHR3dr8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[10px] tracking-[0.2em] uppercase text-[#C6A75E] border border-[#C6A75E]/40 px-4 py-2 hover:bg-[#C6A75E]/10 transition"
+              >
+                Open in Maps →
+              </a>
+            </div>
+
+            {/* ---------- DESKTOP MAP ---------- */}
             <a
               href="https://maps.app.goo.gl/zLNDiZjfNQvHR3dr8"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block"
+              className="group hidden md:block"
             >
-              <div className="w-[140px] md:w-[170px] h-[90px] md:h-[110px] rounded-lg overflow-hidden border border-white/10 group-hover:border-[#C6A75E]/60 transition-all duration-500">
+              <div className="w-[170px] h-[110px] rounded-lg overflow-hidden border border-white/10 group-hover:border-[#C6A75E]/60 transition-all duration-500">
                 <iframe
                   src="https://maps.google.com/maps?q=Iratha%20Auto%20Udupi&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%"

@@ -3,13 +3,21 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function LoadingScreen() {
+export default function LoadingScreen({
+  onFinish,
+}: {
+  onFinish: () => void;
+}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2200);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      onFinish(); // ✅ tell page loading is finished
+    }, 2200);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [onFinish]);
 
   return (
     <AnimatePresence>
@@ -27,6 +35,7 @@ export default function LoadingScreen() {
 
           {/* Wheel container */}
           <div className="relative h-[200px] w-[200px]">
+            
             {/* Rotating wheel */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -37,47 +46,21 @@ export default function LoadingScreen() {
               }}
               className="relative h-full w-full"
             >
-              {/* Outer rim */}
               <svg viewBox="0 0 200 200" className="h-full w-full">
-                {/* Tire */}
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="95"
-                  fill="none"
-                  stroke="#1A1A1A"
-                  strokeWidth="10"
-                />
-                {/* Outer rim ring */}
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="88"
-                  fill="none"
-                  stroke="#2A2A2A"
-                  strokeWidth="3"
-                />
-                {/* Gold rim accent */}
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="85"
-                  fill="none"
-                  stroke="#C6A75E"
-                  strokeWidth="1.5"
-                  opacity="0.8"
-                />
-                {/* Inner rim */}
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="82"
-                  fill="#111111"
-                  stroke="#222222"
-                  strokeWidth="2"
-                />
 
-                {/* Spokes - 5 spoke alloy design */}
+                {/* Tire */}
+                <circle cx="100" cy="100" r="95" fill="none" stroke="#1A1A1A" strokeWidth="10" />
+
+                {/* Outer rim */}
+                <circle cx="100" cy="100" r="88" fill="none" stroke="#2A2A2A" strokeWidth="3" />
+
+                {/* Gold ring */}
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#C6A75E" strokeWidth="1.5" opacity="0.8" />
+
+                {/* Inner rim */}
+                <circle cx="100" cy="100" r="82" fill="#111111" stroke="#222222" strokeWidth="2" />
+
+                {/* Spokes */}
                 {[0, 72, 144, 216, 288].map((angle, i) => (
                   <g key={i} transform={`rotate(${angle} 100 100)`}>
                     <path
@@ -86,7 +69,6 @@ export default function LoadingScreen() {
                       stroke="#2A2A2A"
                       strokeWidth="1"
                     />
-                    {/* Spoke highlight */}
                     <path
                       d="M100 32 L105 65 Q100 68 95 65 Z"
                       fill="none"
@@ -114,7 +96,7 @@ export default function LoadingScreen() {
                   />
                 ))}
 
-                {/* Between-spoke cutouts with depth */}
+                {/* Cutouts */}
                 {[36, 108, 180, 252, 324].map((angle, i) => (
                   <g key={`cut-${i}`} transform={`rotate(${angle} 100 100)`}>
                     <path
@@ -124,20 +106,15 @@ export default function LoadingScreen() {
                     />
                   </g>
                 ))}
+
               </svg>
             </motion.div>
 
-            {/* Light reflection sweep */}
+            {/* Reflection sweep */}
             <motion.div
               className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
-              animate={{
-                opacity: [0, 0.6, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              animate={{ opacity: [0, 0.6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             >
               <motion.div
                 className="absolute inset-0"
@@ -148,16 +125,13 @@ export default function LoadingScreen() {
                     "linear-gradient(135deg, transparent 30%, rgba(198,167,94,0.15) 50%, transparent 70%)",
                   ],
                 }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
+
           </div>
 
-          {/* Brand text below wheel */}
+          {/* Brand text */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -171,6 +145,7 @@ export default function LoadingScreen() {
               IRATHA AUTO
             </span>
           </motion.div>
+
         </motion.div>
       )}
     </AnimatePresence>

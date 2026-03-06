@@ -15,7 +15,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black">
+    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
       
       {/* Background Video */}
       <div className="absolute inset-0">
@@ -42,7 +42,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
+          className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-4 text-center"
         >
           <h1
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em] text-white leading-none"

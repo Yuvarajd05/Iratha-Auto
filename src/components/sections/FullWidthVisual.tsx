@@ -41,12 +41,12 @@ export default function FullWidthVisual() {
     <section
       id="process"
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative w-full overflow-hidden md:min-h-[100dvh]"
     >
       {/* Background */}
       <motion.div className="absolute inset-0 -z-10" style={{ y: bgY }}>
         <div
-          className="h-[110%] w-full bg-cover bg-center"
+          className="h-full md:h-[110%] w-full bg-cover bg-center"
           style={{
             backgroundImage: "url('/images/background.png')",
           }}
@@ -57,8 +57,8 @@ export default function FullWidthVisual() {
       <div className="absolute inset-0 -z-10 bg-black/60" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A0A0A]/70 via-transparent to-[#0A0A0A]" />
 
-      {/* Content Container */}
-      <div className="relative z-10 flex min-h-screen flex-col justify-start md:justify-between px-6 md:px-16 lg:px-24 py-10 md:py-12 lg:py-14 gap-8 md:gap-0">
+      {/* Content */}
+      <div className="relative z-10 flex flex-col justify-start md:justify-between px-6 md:px-16 lg:px-24 py-10 md:py-12 lg:py-14 gap-8 md:gap-0 md:min-h-[100dvh]">
 
         {/* Top Text */}
         <motion.div
@@ -82,7 +82,7 @@ export default function FullWidthVisual() {
           </h2>
         </motion.div>
 
-        {/* Bottom Specs */}
+        {/* Process Steps */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,6 @@ export default function FullWidthVisual() {
             return (
               <div key={index} className="w-full sm:w-[45%] lg:w-[22%]">
 
-                {/* Icon */}
                 <div className="mb-2 sm:mb-4 text-[#C6A75E]">
                   <Icon
                     strokeWidth={1.5}
@@ -104,15 +103,14 @@ export default function FullWidthVisual() {
                   />
                 </div>
 
-                {/* Label */}
                 <p className="text-xs sm:text-base md:text-lg tracking-[0.25em] uppercase text-[#C6A75E] mb-2 sm:mb-3 font-semibold">
                   {spec.label}
                 </p>
 
-                {/* Description */}
                 <p className="text-[11px] sm:text-sm tracking-wide text-white/80 font-light leading-relaxed">
                   {spec.value}
                 </p>
+
               </div>
             );
           })}

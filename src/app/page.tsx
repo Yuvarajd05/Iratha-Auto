@@ -41,9 +41,10 @@ export default function Home() {
  
       <Footer />
  
-      {isFormOpen && (
-        <ServiceRequestForm onClose={() => setIsFormOpen(false)} />
-      )}
+     <ServiceRequestForm
+  show={isFormOpen}
+  onClose={() => setIsFormOpen(false)}
+/>
     </>
   );
 }

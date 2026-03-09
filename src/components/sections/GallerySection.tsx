@@ -98,7 +98,12 @@ export default function GallerySection() {
 
         setMaxScroll(scrollDistance);
 
-        setSectionHeight(scrollDistance + window.innerHeight);
+        // ✅ FIX FOR MOBILE GAP
+        if (window.innerWidth < 768) {
+          setSectionHeight(window.innerHeight * 1.2);
+        } else {
+          setSectionHeight(scrollDistance + window.innerHeight);
+        }
       }
     };
 
@@ -111,11 +116,7 @@ export default function GallerySection() {
     };
   }, []);
 
-  const scrollX = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, -maxScroll]
-  );
+  const scrollX = useTransform(scrollYProgress, [0, 1], [0, -maxScroll]);
 
   return (
     <section
@@ -159,7 +160,6 @@ export default function GallerySection() {
               hover:-translate-y-2"
             >
 
-              {/* Image */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
                 style={{
@@ -167,13 +167,10 @@ export default function GallerySection() {
                 }}
               />
 
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Gold border glow */}
               <div className="absolute inset-0 rounded-xl md:rounded-2xl border border-white/10 transition-all duration-500 group-hover:border-[#C6A75E]/50 group-hover:shadow-[0_0_40px_rgba(198,167,94,0.35)]" />
 
-              {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
                 <span className="text-[8px] md:text-[10px] tracking-[0.3em] uppercase text-[#C6A75E]/70 block mb-2">
                   {image.subtitle}

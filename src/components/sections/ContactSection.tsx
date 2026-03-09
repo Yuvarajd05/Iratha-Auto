@@ -2,7 +2,7 @@
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#0A0A0A] py-24 px-6">
+    <section className=" hidden md:block bg-[#0A0A0A] py-24 px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Top Divider */}

@@ -99,11 +99,11 @@ export default function GallerySection() {
         setMaxScroll(scrollDistance);
 
         // ✅ FIX FOR MOBILE GAP
-        if (window.innerWidth < 768) {
-          setSectionHeight(window.innerHeight * 1.2);
-        } else {
-          setSectionHeight(scrollDistance + window.innerHeight);
-        }
+       if (window.innerWidth < 768) {
+  setSectionHeight(containerRef.current.offsetHeight + 100);
+} else {
+  setSectionHeight(scrollDistance + window.innerHeight);
+}
       }
     };
 
@@ -125,7 +125,7 @@ export default function GallerySection() {
       style={{ height: sectionHeight }}
       className="relative bg-[#0A0A0A]"
     >
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex flex-col justify-start md:justify-center overflow-hidden pt-6 md:pt-0">
 
         {/* Header */}
         <div className="mb-8 md:mb-12 text-center px-6">

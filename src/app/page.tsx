@@ -15,6 +15,7 @@ import InstagramSection from "@/components/sections/InstagramSection"
 import ContactSection from "@/components/sections/ContactSection"
 import Footer from "@/components/sections/Footer"
 import ReviewSection from "@/components/sections/ReviewSection"
+import WhatsAppFloating from "@/components/ui/WhatsAppFloating"
 
 import { ServiceRequestForm } from "@/components/Forms/ServiceRequestForm"
 
@@ -53,6 +54,7 @@ export default function Home() {
         show={isFormOpen}
         onClose={() => setIsFormOpen(false)}
       />
+      <WhatsAppFloating />
 
     </>
   )

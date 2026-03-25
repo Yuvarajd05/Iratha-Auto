@@ -8,7 +8,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import SplitSection from '@/components/sections/SplitSection'
 import GallerySection from '@/components/sections/GallerySection'
 import FullWidthVisual from '@/components/sections/FullWidthVisual'
-import BeforeAfterSection from '@/components/sections/BeforeAfterSection'
 import CTASection from '@/components/sections/CTASection'
 import BrandSection from '@/components/sections/BrandSection'
 import InstagramSection from '@/components/sections/InstagramSection'
@@ -18,6 +17,8 @@ import ReviewSection from '@/components/sections/ReviewSection'
 import WhatsAppFloating from '@/components/ui/WhatsAppFloating'
 
 import { ServiceRequestForm } from '@/components/Forms/ServiceRequestForm'
+
+// ❌ Removed BeforeAfterSection import (IMPORTANT)
 
 export default function Home() {
   const [isFormOpen, setIsFormOpen] = useState(false)
@@ -35,7 +36,10 @@ export default function Home() {
         <SplitSection />
         <GallerySection />
         <FullWidthVisual />
-        <BeforeAfterSection />
+
+        {/* ❌ BeforeAfterSection removed */}
+        {/* <BeforeAfterSection /> */}
+
         <CTASection onBookService={() => setIsFormOpen(true)} />
         <BrandSection />
         <ReviewSection />

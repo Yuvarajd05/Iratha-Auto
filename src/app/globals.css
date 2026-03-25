@@ -1,17 +1,17 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: #0A0A0A;
-  --color-foreground: #F5F5F5;
-  --color-gold: #C6A75E;
-  --color-gold-light: #D4BA7A;
-  --color-gold-dark: #A8893E;
-  --color-charcoal: #1A1A1A;
-  --color-charcoal-light: #2A2A2A;
-  --color-matte: #0A0A0A;
+  --color-background: #0a0a0a;
+  --color-foreground: #f5f5f5;
+  --color-gold: #c6a75e;
+  --color-gold-light: #d4ba7a;
+  --color-gold-dark: #a8893e;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-light: #2a2a2a;
+  --color-matte: #0a0a0a;
   --color-matte-light: #121212;
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
@@ -31,15 +31,15 @@
   }
 
   body {
-    background-color: #0A0A0A;
-    color: #F5F5F5;
+    background-color: #0a0a0a;
+    color: #f5f5f5;
     font-family: var(--font-inter), system-ui, sans-serif;
     overflow-x: hidden;
   }
 
   ::selection {
     background-color: rgba(198, 167, 94, 0.3);
-    color: #F5F5F5;
+    color: #f5f5f5;
   }
 
   ::-webkit-scrollbar {
@@ -47,26 +47,25 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #0a0a0a;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #C6A75E;
+    background: #c6a75e;
     border-radius: 3px;
   }
 }
 
 @layer utilities {
-
   .text-gradient-gold {
-    background: linear-gradient(135deg, #C6A75E 0%, #D4BA7A 50%, #C6A75E 100%);
+    background: linear-gradient(135deg, #c6a75e 0%, #d4ba7a 50%, #c6a75e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .grain-overlay::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -103,16 +102,16 @@
 nextjs-portal {
   display: none !important;
 }
-.input{
-width:100%;
-padding:12px 16px;
-border:1px solid #d1d5db;
-border-radius:10px;
-outline:none;
-transition:all 0.2s;
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s;
 }
 
-.input:focus{
-border-color:#c29958;
-box-shadow:0 0 0 2px rgba(194,153,88,0.2);
+.input:focus {
+  border-color: #c29958;
+  box-shadow: 0 0 0 2px rgba(194, 153, 88, 0.2);
 }

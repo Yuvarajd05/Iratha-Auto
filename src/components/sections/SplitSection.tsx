@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function SplitSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+    offset: ['start end', 'end start']
+  })
 
-  const imageY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [40, -40])
 
   return (
     <section
@@ -20,7 +20,6 @@ export default function SplitSection() {
       className="relative bg-[#0A0A0A] py-12 md:py-16 overflow-hidden"
     >
       <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-stretch">
-
         {/* LEFT CONTENT */}
         <div className="flex flex-1 flex-col justify-center px-6 md:px-16 lg:px-24 py-6 md:py-0 z-10">
           <motion.div
@@ -38,7 +37,7 @@ export default function SplitSection() {
 
             <h2
               className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight text-white"
-              style={{ fontFamily: "var(--font-playfair)" }}
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Comprehensive
               <br />
@@ -67,15 +66,11 @@ export default function SplitSection() {
 
         {/* RIGHT IMAGE */}
         <div className="relative flex-1 overflow-hidden min-h-[260px] sm:min-h-[320px] md:min-h-[500px]">
-
-          <motion.div
-            className="absolute inset-0"
-            style={{ y: imageY }}
-          >
+          <motion.div className="absolute inset-0" style={{ y: imageY }}>
             <div
               className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
               style={{
-                backgroundImage: "url('/images/toyota.png')",
+                backgroundImage: "url('/images/toyota.png')"
               }}
             />
 
@@ -89,8 +84,7 @@ export default function SplitSection() {
           {/* Gold Line */}
           <div className="absolute left-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[#C6A75E]/30 to-transparent hidden md:block" />
         </div>
-
       </div>
     </section>
-  );
+  )
 }

@@ -1,23 +1,19 @@
-"use client";
+'use client'
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
-export default function LoadingScreen({
-  onFinish,
-}: {
-  onFinish: () => void;
-}) {
-  const [isLoading, setIsLoading] = useState(true);
+export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-      onFinish(); // ✅ tell page loading is finished
-    }, 2200);
+      setIsLoading(false)
+      onFinish() // ✅ tell page loading is finished
+    }, 2200)
 
-    return () => clearTimeout(timer);
-  }, [onFinish]);
+    return () => clearTimeout(timer)
+  }, [onFinish])
 
   return (
     <AnimatePresence>
@@ -35,19 +31,17 @@ export default function LoadingScreen({
 
           {/* Wheel container */}
           <div className="relative h-[200px] w-[200px]">
-            
             {/* Rotating wheel */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "linear",
+                ease: 'linear'
               }}
               className="relative h-full w-full"
             >
               <svg viewBox="0 0 200 200" className="h-full w-full">
-
                 {/* Tire */}
                 <circle cx="100" cy="100" r="95" fill="none" stroke="#1A1A1A" strokeWidth="10" />
 
@@ -55,7 +49,15 @@ export default function LoadingScreen({
                 <circle cx="100" cy="100" r="88" fill="none" stroke="#2A2A2A" strokeWidth="3" />
 
                 {/* Gold ring */}
-                <circle cx="100" cy="100" r="85" fill="none" stroke="#C6A75E" strokeWidth="1.5" opacity="0.8" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="85"
+                  fill="none"
+                  stroke="#C6A75E"
+                  strokeWidth="1.5"
+                  opacity="0.8"
+                />
 
                 {/* Inner rim */}
                 <circle cx="100" cy="100" r="82" fill="#111111" stroke="#222222" strokeWidth="2" />
@@ -80,15 +82,23 @@ export default function LoadingScreen({
 
                 {/* Center hub */}
                 <circle cx="100" cy="100" r="22" fill="#1A1A1A" stroke="#2A2A2A" strokeWidth="2" />
-                <circle cx="100" cy="100" r="18" fill="#151515" stroke="#C6A75E" strokeWidth="1" opacity="0.6" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="18"
+                  fill="#151515"
+                  stroke="#C6A75E"
+                  strokeWidth="1"
+                  opacity="0.6"
+                />
                 <circle cx="100" cy="100" r="8" fill="#1E1E1E" stroke="#333333" strokeWidth="1" />
 
                 {/* Lug nuts */}
                 {[0, 72, 144, 216, 288].map((angle, i) => (
                   <circle
                     key={`lug-${i}`}
-                    cx={100 + 14 * Math.cos((angle - 90) * Math.PI / 180)}
-                    cy={100 + 14 * Math.sin((angle - 90) * Math.PI / 180)}
+                    cx={100 + 14 * Math.cos(((angle - 90) * Math.PI) / 180)}
+                    cy={100 + 14 * Math.sin(((angle - 90) * Math.PI) / 180)}
                     r="2.5"
                     fill="#2A2A2A"
                     stroke="#333333"
@@ -106,7 +116,6 @@ export default function LoadingScreen({
                     />
                   </g>
                 ))}
-
               </svg>
             </motion.div>
 
@@ -114,21 +123,20 @@ export default function LoadingScreen({
             <motion.div
               className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
               animate={{ opacity: [0, 0.6, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
             >
               <motion.div
                 className="absolute inset-0"
                 animate={{
                   background: [
-                    "linear-gradient(135deg, transparent 30%, rgba(198,167,94,0.15) 50%, transparent 70%)",
-                    "linear-gradient(135deg, transparent 50%, rgba(198,167,94,0.15) 70%, transparent 90%)",
-                    "linear-gradient(135deg, transparent 30%, rgba(198,167,94,0.15) 50%, transparent 70%)",
-                  ],
+                    'linear-gradient(135deg, transparent 30%, rgba(198,167,94,0.15) 50%, transparent 70%)',
+                    'linear-gradient(135deg, transparent 50%, rgba(198,167,94,0.15) 70%, transparent 90%)',
+                    'linear-gradient(135deg, transparent 30%, rgba(198,167,94,0.15) 50%, transparent 70%)'
+                  ]
                 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
               />
             </motion.div>
-
           </div>
 
           {/* Brand text */}
@@ -140,14 +148,13 @@ export default function LoadingScreen({
           >
             <span
               className="text-lg font-light tracking-[0.4em] text-[#C6A75E]/70"
-              style={{ fontFamily: "var(--font-playfair)" }}
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
               IRATHA AUTO
             </span>
           </motion.div>
-
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }

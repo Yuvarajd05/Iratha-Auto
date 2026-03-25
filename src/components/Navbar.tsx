@@ -1,29 +1,28 @@
-"use client";
+'use client'
 
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const navLinks = [
-  { label: "Services", href: "#gallery" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
-  { label: "Specs", href: "#cta" },
-];
+  { label: 'Services', href: '#gallery' },
+  { label: 'Process', href: '#process' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Specs', href: '#cta' }
+]
 
 export default function Navbar({ onBookService }: { onBookService: () => void }) {
+  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-  const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const { scrollY } = useScroll();
-  const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.9]);
+  const { scrollY } = useScroll()
+  const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.9])
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <>
@@ -38,19 +37,18 @@ export default function Navbar({ onBookService }: { onBookService: () => void })
           className="absolute inset-0 backdrop-blur-xl"
           style={{
             opacity: bgOpacity,
-            backgroundColor: "rgba(10,10,10,0.92)",
+            backgroundColor: 'rgba(10,10,10,0.92)'
           }}
         />
 
         {/* Gold line */}
         <div
           className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C6A75E]/40 to-transparent transition-opacity duration-500 ${
-            scrolled ? "opacity-100" : "opacity-0"
+            scrolled ? 'opacity-100' : 'opacity-0'
           }`}
         />
 
         <div className="relative flex items-center justify-between max-w-7xl mx-auto">
-
           {/* Logo */}
           <div className="w-[140px] md:w-[180px] flex items-center">
             <a href="#" className="flex items-center">
@@ -95,16 +93,15 @@ export default function Navbar({ onBookService }: { onBookService: () => void })
           >
             <span
               className={`w-7 h-[2px] bg-[#C6A75E] transition-all duration-300 ${
-                isOpen ? "rotate-45 translate-y-[4px]" : ""
+                isOpen ? 'rotate-45 translate-y-[4px]' : ''
               }`}
             />
             <span
               className={`w-7 h-[2px] bg-[#C6A75E] transition-all duration-300 ${
-                isOpen ? "-rotate-45 -translate-y-[4px]" : ""
+                isOpen ? '-rotate-45 -translate-y-[4px]' : ''
               }`}
             />
           </button>
-
         </div>
       </motion.nav>
 
@@ -112,13 +109,12 @@ export default function Navbar({ onBookService }: { onBookService: () => void })
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: "100%" }}
+            initial={{ x: '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            exit={{ x: '100%' }}
             transition={{ duration: 0.4 }}
             className="fixed top-0 right-0 w-full h-screen bg-[#0A0A0A] z-40 flex flex-col items-center justify-center gap-8"
           >
-
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -133,17 +129,16 @@ export default function Navbar({ onBookService }: { onBookService: () => void })
             {/* Mobile CTA */}
             <button
               onClick={() => {
-                setIsOpen(false);
-                onBookService();
+                setIsOpen(false)
+                onBookService()
               }}
               className="mt-6 text-sm tracking-[0.2em] uppercase text-[#C6A75E] border border-[#C6A75E]/40 px-8 py-3"
             >
               Book a Service
             </button>
-
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

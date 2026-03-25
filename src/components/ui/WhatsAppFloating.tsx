@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from 'react-icons/fa'
 
 export default function WhatsAppFloating() {
   return (
@@ -20,5 +20,5 @@ export default function WhatsAppFloating() {
     >
       <FaWhatsapp size={26} />
     </a>
-  );
+  )
 }

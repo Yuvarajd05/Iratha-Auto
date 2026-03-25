@@ -1,41 +1,41 @@
-"use client";
+'use client'
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { Calendar, Search, Wrench, ShieldCheck } from "lucide-react";
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+import { Calendar, Search, Wrench, ShieldCheck } from 'lucide-react'
 
 const specs = [
   {
-    label: "Schedule",
-    value: "Book your appointment online or by phone at your convenience",
-    icon: Calendar,
+    label: 'Schedule',
+    value: 'Book your appointment online or by phone at your convenience',
+    icon: Calendar
   },
   {
-    label: "Inspect",
-    value: "Comprehensive inspection and transparent diagnosis of your vehicle",
-    icon: Search,
+    label: 'Inspect',
+    value: 'Comprehensive inspection and transparent diagnosis of your vehicle',
+    icon: Search
   },
   {
-    label: "Repair",
-    value: "Expert technicians perform repairs with precision and care",
-    icon: Wrench,
+    label: 'Repair',
+    value: 'Expert technicians perform repairs with precision and care',
+    icon: Wrench
   },
   {
-    label: "Quality Check",
-    value: "Rigorous testing to ensure everything meets our high standards",
-    icon: ShieldCheck,
-  },
-];
+    label: 'Quality Check',
+    value: 'Rigorous testing to ensure everything meets our high standards',
+    icon: ShieldCheck
+  }
+]
 
 export default function FullWidthVisual() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+    offset: ['start end', 'end start']
+  })
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
 
   return (
     <section
@@ -48,7 +48,7 @@ export default function FullWidthVisual() {
         <div
           className="h-full md:h-[110%] w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/background.png')",
+            backgroundImage: "url('/images/background.png')"
           }}
         />
       </motion.div>
@@ -59,7 +59,6 @@ export default function FullWidthVisual() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-start md:justify-between px-6 md:px-16 lg:px-24 py-10 md:py-12 lg:py-14 gap-8 md:gap-0 md:min-h-[100dvh]">
-
         {/* Top Text */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -74,7 +73,7 @@ export default function FullWidthVisual() {
 
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight"
-            style={{ fontFamily: "var(--font-playfair)" }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             Our Service
             <br />
@@ -91,11 +90,10 @@ export default function FullWidthVisual() {
           className="flex flex-wrap justify-between gap-y-6 md:gap-y-8 lg:gap-y-10 mt-4 md:mt-10"
         >
           {specs.map((spec, index) => {
-            const Icon = spec.icon;
+            const Icon = spec.icon
 
             return (
               <div key={index} className="w-full sm:w-[45%] lg:w-[22%]">
-
                 <div className="mb-2 sm:mb-4 text-[#C6A75E]">
                   <Icon
                     strokeWidth={1.5}
@@ -110,13 +108,11 @@ export default function FullWidthVisual() {
                 <p className="text-[11px] sm:text-sm tracking-wide text-white/80 font-light leading-relaxed">
                   {spec.value}
                 </p>
-
               </div>
-            );
+            )
           })}
         </motion.div>
-
       </div>
     </section>
-  );
+  )
 }

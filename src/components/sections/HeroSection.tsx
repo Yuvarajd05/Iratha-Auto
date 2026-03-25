@@ -1,22 +1,21 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [showContent, setShowContent] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [showContent, setShowContent] = useState(false)
 
   const handleTimeUpdate = () => {
-    if (!videoRef.current) return;
+    if (!videoRef.current) return
     if (videoRef.current.currentTime >= 5) {
-      setShowContent(true);
+      setShowContent(true)
     }
-  };
+  }
 
   return (
     <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
-      
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
@@ -41,12 +40,12 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
           className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-4 text-center"
         >
           <h1
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em] text-white leading-none"
-            style={{ fontFamily: "var(--font-playfair)" }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             IRATHA
           </h1>
@@ -68,13 +67,11 @@ export default function HeroSection() {
           </a>
 
           <div className="absolute bottom-10 flex flex-col items-center gap-3">
-            <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase">
-              Scroll
-            </span>
+            <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
             <div className="h-8 w-px bg-gradient-to-b from-[#C6A75E]/70 to-transparent animate-pulse" />
           </div>
         </motion.div>
       )}
     </section>
-  );
+  )
 }

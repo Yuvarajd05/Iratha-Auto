@@ -1,18 +1,15 @@
-"use client";
+'use client'
 
 export default function Footer() {
   return (
     <footer className="relative bg-[#0A0A0A]">
-
       {/* Gold top border */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#C6A75E]/30 to-transparent" />
 
       {/* Container */}
       <div className="mx-auto max-w-7xl px-6 md:px-16 py-8 md:py-14">
-
         {/* Main footer layout */}
         <div className="grid grid-cols-2 md:flex md:flex-row md:justify-between items-start gap-y-6 gap-x-8 md:gap-14 mb-8 md:mb-10">
-
           {/* Logo */}
           <div className="col-span-2 md:col-span-1 max-w-xs">
             <img
@@ -52,10 +49,7 @@ export default function Footer() {
             </h4>
 
             <div className="flex flex-col gap-1 text-[11px] md:text-xs text-white/60">
-              <span>
-                Building No, 2-147-1, Katapady, Moodabettu,
-                Udupi, Karnataka - 574105
-              </span>
+              <span>Building No, 2-147-1, Katapady, Moodabettu, Udupi, Karnataka - 574105</span>
               <span>+91 7500408090</span>
               <span>info@irathaauto.com</span>
             </div>
@@ -107,18 +101,16 @@ export default function Footer() {
               </p>
             </a>
           </div>
-
         </div>
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-3 flex flex-col md:flex-row justify-between items-center gap-2">
-
           <p className="text-[9px] md:text-[10px] tracking-[0.2em] text-white/60 text-center md:text-left">
             © 2026 IRATHA Auto. All rights reserved.
           </p>
 
           <div className="flex gap-5">
-            {["Instagram", "LinkedIn"].map((social) => (
+            {['Instagram', 'LinkedIn'].map((social) => (
               <a
                 key={social}
                 href="#"
@@ -128,10 +120,8 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
         </div>
-
       </div>
     </footer>
-  );
+  )
 }

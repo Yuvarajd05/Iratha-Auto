@@ -1,12 +1,8 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
-export default function CTASection({
-  onBookService,
-}: {
-  onBookService: () => void;
-}) {
+export default function CTASection({ onBookService }: { onBookService: () => void }) {
   return (
     <section
       id="cta"
@@ -25,7 +21,7 @@ export default function CTASection({
             backgroundImage: `
             url("data:image/svg+xml,%3Csvg width='120' height='104' viewBox='0 0 120 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='60,2 118,34 118,70 60,102 2,70 2,34' fill='none' stroke='%23C6A75E' stroke-width='1'/%3E%3C/svg%3E")
             `,
-            backgroundSize: "120px 104px",
+            backgroundSize: '120px 104px'
           }}
         />
       </div>
@@ -40,7 +36,7 @@ export default function CTASection({
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {/* Decorative lines */}
           <div className="flex items-center justify-center gap-4 mb-10">
@@ -51,7 +47,7 @@ export default function CTASection({
 
           <h2
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-tight"
-            style={{ fontFamily: "var(--font-playfair)" }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             Where Machines
             <br />
@@ -79,5 +75,5 @@ export default function CTASection({
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

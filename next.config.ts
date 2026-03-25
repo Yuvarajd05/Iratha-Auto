@@ -1,36 +1,36 @@
-import type { NextConfig } from "next";
-import path from "node:path";
+import type { NextConfig } from 'next'
+import path from 'node:path'
 
 // Loader path from orchids-visual-edits - use direct resolve to get the actual file
-const loaderPath = require.resolve('orchids-visual-edits/loader.js');
+const loaderPath = require.resolve('orchids-visual-edits/loader.js')
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: '**'
       },
       {
         protocol: 'http',
-        hostname: '**',
-      },
-    ],
+        hostname: '**'
+      }
+    ]
   },
   outputFileTracingRoot: path.resolve(__dirname, '../../'),
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   turbopack: {
     rules: {
-      "*.{jsx,tsx}": {
+      '*.{jsx,tsx}': {
         loaders: [loaderPath]
       }
     }
   }
-} as NextConfig;
+} as NextConfig
 
-export default nextConfig;
+export default nextConfig

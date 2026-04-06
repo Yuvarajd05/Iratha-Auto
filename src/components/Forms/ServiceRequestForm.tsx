@@ -1,35 +1,87 @@
 'use client'
 
 import type React from 'react'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Wrench, X, Upload } from 'lucide-react'
-import { submitRepairRequest } from '@/Services/repairService'
+import {
+  getRepairRequestOptions,
+  submitRepairRequest,
+  type RepairRequestOptionService,
+  type RepairRequestOptionVehicleModel,
+} from '@/Services/repairService'
 
 export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: () => void }) {
   const [formData, setFormData] = useState({
     contactName: '',
     email: '',
     phone: '',
+    numberPlate: '',
     vehicleBrand: '',
-    otherBrand: '',
-    vehicleModel: '',
+    vehicleModelId: '',
+    serviceId: '',
     serviceDate: '',
     serviceTime: '',
-    repairIssue: ''
+    repairIssue: '',
   })
 
   const [previewImages, setPreviewImages] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoadingOptions, setIsLoadingOptions] = useState(false)
+  const [hasLoadedOptions, setHasLoadedOptions] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const [vehicleModels, setVehicleModels] = useState<RepairRequestOptionVehicleModel[]>([])
+  const [services, setServices] = useState<RepairRequestOptionService[]>([])
+
+  useEffect(() => {
+    if (!show || hasLoadedOptions) return
+
+    const loadOptions = async () => {
+      setIsLoadingOptions(true)
+      try {
+        const options = await getRepairRequestOptions()
+        setVehicleModels(options.vehicleModels)
+        setServices(options.services)
+        setHasLoadedOptions(true)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load form options')
+      } finally {
+        setIsLoadingOptions(false)
+      }
+    }
+
+    void loadOptions()
+  }, [show, hasLoadedOptions])
+
+  const brandOptions = useMemo(() => {
+    return Array.from(new Set(vehicleModels.map((item) => item.brandName).filter(Boolean))).sort((a, b) =>
+      a.localeCompare(b)
+    )
+  }, [vehicleModels])
+
+  const filteredVehicleModels = useMemo(() => {
+    if (!formData.vehicleBrand) return []
+    return vehicleModels.filter((item) => item.brandName === formData.vehicleBrand)
+  }, [vehicleModels, formData.vehicleBrand])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+    const { name, value } = e.target
+    setFormData((prev) => {
+      if (name === 'vehicleBrand') {
+        return {
+          ...prev,
+          vehicleBrand: value,
+          vehicleModelId: '',
+        }
+      }
+      return {
+        ...prev,
+        [name]: value,
+      }
     })
   }
 
@@ -44,22 +96,43 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
 
     setIsSubmitting(true)
     setError('')
+    setSuccess(false)
 
     try {
-      const response = await submitRepairRequest(formData)
+      const selectedVehicleModel = vehicleModels.find(
+        (item) => item.id === Number(formData.vehicleModelId)
+      )
 
-      if (response.status !== 'success') {
-        throw new Error(response.message || 'Server error')
+      if (!selectedVehicleModel) {
+        throw new Error('Please select a valid vehicle model.')
       }
 
-      setSuccess(true)
+      await submitRepairRequest({
+        contactName: formData.contactName,
+        email: formData.email,
+        phone: formData.phone,
+        numberPlate: formData.numberPlate,
+        vehicleBrand: formData.vehicleBrand,
+        vehicleModelName: selectedVehicleModel.name,
+        vehicleModelId: Number(formData.vehicleModelId),
+        serviceId: formData.serviceId ? Number(formData.serviceId) : undefined,
+        repairIssue: formData.repairIssue,
+      })
 
-      setTimeout(() => {
-        // Use the redirect provided by Odoo if available, otherwise fallback
-        const redirectPath = response.redirect || '/request-thank-you'
-        const odooBaseUrl = process.env.NEXT_PUBLIC_ODOO_BASE_URL || 'http://localhost:8069'
-        window.location.href = `${odooBaseUrl}${redirectPath}`
-      }, 1200)
+      setSuccess(true)
+      setFormData({
+        contactName: '',
+        email: '',
+        phone: '',
+        numberPlate: '',
+        vehicleBrand: '',
+        vehicleModelId: '',
+        serviceId: '',
+        serviceDate: '',
+        serviceTime: '',
+        repairIssue: '',
+      })
+      setPreviewImages([])
     } catch (err) {
       console.error('Repair request failed:', err)
 
@@ -75,7 +148,7 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
     'w-full px-4 py-2.5 border border-gray-300 rounded-lg outline-none bg-white text-black placeholder-gray-500 focus:border-[#c29958] focus:ring-2 focus:ring-[#c29958]/20'
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
       <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl p-6">
         <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-black">
           <X size={22} />
@@ -88,6 +161,10 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
 
           <h2 className="text-2xl font-bold text-[#1a2b3c]">Repair / Service Request</h2>
         </div>
+
+        {isLoadingOptions && (
+          <div className="mb-4 text-sm text-gray-600">Loading live options from Odoo...</div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* PERSONAL */}
@@ -124,6 +201,16 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
                 onChange={handleChange}
                 className={inputStyle}
               />
+
+              <input
+                type="text"
+                name="numberPlate"
+                placeholder="Vehicle Number Plate"
+                required
+                value={formData.numberPlate}
+                onChange={handleChange}
+                className={inputStyle}
+              />
             </div>
           </div>
 
@@ -137,38 +224,47 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
                 value={formData.vehicleBrand}
                 onChange={handleChange}
                 required
+                disabled={isLoadingOptions}
                 className={inputStyle}
               >
                 <option value="">Select Vehicle Brand</option>
-                <option>BMW</option>
-                <option>Mercedes</option>
-                <option>Audi</option>
-                <option>Toyota</option>
-                <option>Honda</option>
-                <option>Hyundai</option>
-                <option value="Other">Other</option>
+                {brandOptions.map((brand) => (
+                  <option key={brand} value={brand}>
+                    {brand}
+                  </option>
+                ))}
               </select>
 
-              {formData.vehicleBrand === 'Other' && (
-                <input
-                  type="text"
-                  name="otherBrand"
-                  placeholder="Enter Vehicle Brand"
-                  required
-                  value={formData.otherBrand}
-                  onChange={handleChange}
-                  className={inputStyle}
-                />
-              )}
-
-              <input
-                type="text"
-                name="vehicleModel"
-                placeholder="Vehicle Model"
-                value={formData.vehicleModel}
+              <select
+                name="vehicleModelId"
+                value={formData.vehicleModelId}
                 onChange={handleChange}
+                required
+                disabled={!formData.vehicleBrand || isLoadingOptions}
                 className={inputStyle}
-              />
+              >
+                <option value="">Select Vehicle Model</option>
+                {filteredVehicleModels.map((item) => (
+                  <option key={item.id} value={String(item.id)}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                name="serviceId"
+                value={formData.serviceId}
+                onChange={handleChange}
+                disabled={isLoadingOptions}
+                className={inputStyle}
+              >
+                <option value="">Select Service (Optional)</option>
+                {services.map((item) => (
+                  <option key={item.id} value={String(item.id)}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -227,14 +323,22 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
             {previewImages.length > 0 && (
               <div className="grid grid-cols-3 gap-2 mt-3">
                 {previewImages.map((img, index) => (
-                  <img key={index} src={img} className="rounded-md object-cover h-20 w-full" />
+                  <Image
+                    key={index}
+                    src={img}
+                    alt={`Uploaded damage preview ${index + 1}`}
+                    width={160}
+                    height={80}
+                    unoptimized
+                    className="rounded-md object-cover h-20 w-full"
+                  />
                 ))}
               </div>
             )}
           </div>
 
           {success && (
-            <div className="text-green-600 text-sm">Service request submitted successfully!</div>
+            <div className="text-green-600 text-sm">Service request submitted successfully.</div>
           )}
 
           {error && <div className="text-red-600 text-sm">{error}</div>}

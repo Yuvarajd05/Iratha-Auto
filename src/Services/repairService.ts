@@ -1,31 +1,70 @@
-'use server'
+export interface RepairRequestOptionVehicleModel {
+  id: number
+  name: string
+  brandId: number | null
+  brandName: string
+  label: string
+}
 
-import { callOdoo } from '@/lib/odooClient'
+export interface RepairRequestOptionService {
+  id: number
+  name: string
+  isActive: boolean
+}
 
-export async function submitRepairRequest(data: any): Promise<any> {
-  const params = {
-    contact_name: data.contactName,
-    email: data.email,
-    phone: data.phone,
-    vehicle_model: 1, // Placeholder integer IDs
-    service: 1,
-    service_type: 3,
-    repair_issue: data.repairIssue || '',
-    repair_reason: 'Website Request',
-    demage: `Brand: ${data.vehicleBrand}, Model: ${data.vehicleModel}`,
-    number_plate: data.number_plate, // Ensure this is passed if available
-    meter_reading: data.meter_reading,
+export interface RepairRequestOptionsResponse {
+  vehicleModels: RepairRequestOptionVehicleModel[]
+  services: RepairRequestOptionService[]
+}
+
+export interface RepairRequestSubmitPayload {
+  contactName: string
+  email: string
+  phone: string
+  vehicleBrand: string
+  vehicleModelName: string
+  vehicleModelId: number
+  serviceId?: number
+  numberPlate: string
+  repairIssue?: string
+}
+
+interface ApiResponse<T> {
+  success: boolean
+  error?: string
+  message?: string
+  data?: T
+}
+
+export async function getRepairRequestOptions(): Promise<RepairRequestOptionsResponse> {
+  const response = await fetch('/api/odoo/repair-request/options', {
+    method: 'GET',
+    cache: 'no-store',
+  })
+
+  const json = (await response.json()) as ApiResponse<RepairRequestOptionsResponse>
+  if (!response.ok || !json.success || !json.data) {
+    throw new Error(json.error || 'Failed to load repair form options.')
   }
 
-  try {
-    const response = await callOdoo({
-      endpoint: '/repair_request',
-      params,
-    })
+  return json.data
+}
 
-    return response.result
-  } catch (error) {
-    console.error('API Error:', error)
-    throw error
+export async function submitRepairRequest(
+  payload: RepairRequestSubmitPayload
+): Promise<{ leadId: number }> {
+  const response = await fetch('/api/odoo/repair-request', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+
+  const json = (await response.json()) as ApiResponse<{ leadId: number }>
+  if (!response.ok || !json.success || !json.data) {
+    throw new Error(json.error || 'Failed to submit repair request.')
   }
+
+  return json.data
 }

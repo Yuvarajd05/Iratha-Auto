@@ -48,19 +48,22 @@ export function ServiceRequestForm({ show, onClose }: { show: boolean; onClose: 
     try {
       const response = await submitRepairRequest(formData)
 
-      if (!response.ok) {
-        throw new Error('Server error')
+      if (response.status !== 'success') {
+        throw new Error(response.message || 'Server error')
       }
 
       setSuccess(true)
 
       setTimeout(() => {
-        window.location.href = 'http://localhost:8069/request-thank-you'
+        // Use the redirect provided by Odoo if available, otherwise fallback
+        const redirectPath = response.redirect || '/request-thank-you'
+        const odooBaseUrl = process.env.NEXT_PUBLIC_ODOO_BASE_URL || 'http://localhost:8069'
+        window.location.href = `${odooBaseUrl}${redirectPath}`
       }, 1200)
     } catch (err) {
       console.error('Repair request failed:', err)
 
-      setError('Failed to submit request. Please try again.')
+      setError(`Failed to submit request: ${err instanceof Error ? err.message : 'Please check connection'}`)
     }
 
     setIsSubmitting(false)

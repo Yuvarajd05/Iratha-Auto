@@ -1,29 +1,29 @@
-export async function submitRepairRequest(data: any) {
-  const formData = new FormData()
+'use server'
 
-  // fields expected by Odoo controller (must be numeric strings for IDs)
-  formData.append('contact_name', data.contactName)
-  formData.append('email', data.email)
-  formData.append('phone', data.phone)
+import { callOdoo } from '@/lib/odooClient'
 
-  // Odoo expects IDs (integers) for these fields
-  // For now using '1' as placeholder until dynamic IDs are implemented
-  formData.append('vehicle_model', '1')
-  formData.append('service', '1')
-  formData.append('service_type', '3')
-
-  formData.append('repair_issue', data.repairIssue || '')
-  formData.append('repair_reason', 'Website Request')
-  formData.append('demage', `Brand: ${data.vehicleBrand}, Model: ${data.vehicleModel}`)
+export async function submitRepairRequest(data: any): Promise<any> {
+  const params = {
+    contact_name: data.contactName,
+    email: data.email,
+    phone: data.phone,
+    vehicle_model: 1, // Placeholder integer IDs
+    service: 1,
+    service_type: 3,
+    repair_issue: data.repairIssue || '',
+    repair_reason: 'Website Request',
+    demage: `Brand: ${data.vehicleBrand}, Model: ${data.vehicleModel}`,
+    number_plate: data.number_plate, // Ensure this is passed if available
+    meter_reading: data.meter_reading,
+  }
 
   try {
-    const response = await fetch('http://127.0.0.1:8069/repair_request', {
-      method: 'POST',
-      body: formData
-      // Note: browser automatically sets Content-Type to multipart/form-data with boundary
+    const response = await callOdoo({
+      endpoint: '/repair_request',
+      params,
     })
 
-    return response
+    return response.result
   } catch (error) {
     console.error('API Error:', error)
     throw error

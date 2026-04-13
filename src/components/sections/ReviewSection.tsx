@@ -42,7 +42,7 @@ export default function ReviewSection() {
             </motion.span>
 
             <p className="text-white/60 mt-3 text-sm tracking-wide">
-              4.9 Rating (350+ Google Reviews)
+              4.9 Rating (100+ Google Reviews)
             </p>
           </div>
         </div>
@@ -104,21 +104,21 @@ export default function ReviewSection() {
           {/* MOBILE: grid | DESKTOP: flex */}
           <div className="grid grid-cols-3 md:flex md:flex-row justify-center items-center gap-6 md:gap-12">
             <div>
-              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">2500+</h3>
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">500+</h3>
               <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Cars Serviced
               </p>
             </div>
 
             <div>
-              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">5+</h3>
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">2+</h3>
               <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Years Experience
               </p>
             </div>
 
             <div>
-              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">350+</h3>
+              <h3 className="text-2xl md:text-4xl text-[#C6A75E] font-light">100+</h3>
               <p className="text-white/50 text-[9px] md:text-xs tracking-wider uppercase">
                 Google Reviews
               </p>

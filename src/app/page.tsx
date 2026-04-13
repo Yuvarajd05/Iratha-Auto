@@ -11,7 +11,6 @@ import FullWidthVisual from '@/components/sections/FullWidthVisual'
 import CTASection from '@/components/sections/CTASection'
 import BrandSection from '@/components/sections/BrandSection'
 import InstagramSection from '@/components/sections/InstagramSection'
-import ContactSection from '@/components/sections/ContactSection'
 import Footer from '@/components/sections/Footer'
 import ReviewSection from '@/components/sections/ReviewSection'
 import WhatsAppFloating from '@/components/ui/WhatsAppFloating'
@@ -44,7 +43,7 @@ export default function Home() {
         <BrandSection />
         <ReviewSection />
         <InstagramSection />
-        <ContactSection />
+      
       </main>
 
       <Footer />

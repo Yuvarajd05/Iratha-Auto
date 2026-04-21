@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   keywords: ['luxury cars', 'automotive', 'performance vehicles', 'IRATHA Auto'],
   alternates: {
     canonical: 'https://iratha.com'
+  },
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: 'any', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
   }
 }
 
